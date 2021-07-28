@@ -13,6 +13,7 @@ services:
     volumes:
     - ./notebook:/opt/zeppelin/notebook
     - ./logs:/opt/zeppelin/logs
+    - ./conf:/opt/zeppelin/conf
 
 networks:
   spark-net:
