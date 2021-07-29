@@ -1043,13 +1043,13 @@
       "properties": {
         "SPARK_HOME": {
           "name": "SPARK_HOME",
-          "value": "",
+          "value": "/opt/zeppelin/spark",
           "type": "string",
           "description": "Location of spark distribution"
         },
         "spark.master": {
           "name": "spark.master",
-          "value": "local[*]",
+          "value": "spark://spark-master:7077",
           "type": "string",
           "description": "Spark master uri. local | yarn-client | yarn-cluster | spark master address of standalone mode, ex) spark://master_host:7077"
         },
@@ -1073,7 +1073,7 @@
         },
         "spark.driver.memory": {
           "name": "spark.driver.memory",
-          "value": "1g",
+          "value": "8g",
           "type": "string",
           "description": "Amount of memory to use for the driver process, i.e. where SparkContext is initialized, in the same format as JVM memory strings with a size unit suffix (\"k\", \"m\", \"g\" or \"t\") (e.g. 512m, 2g)."
         },
@@ -1133,7 +1133,7 @@
         },
         "zeppelin.spark.enableSupportedVersionCheck": {
           "name": "zeppelin.spark.enableSupportedVersionCheck",
-          "value": true,
+          "value": false,
           "type": "checkbox",
           "description": "Whether checking supported spark version. Developer only setting, not for production use"
         },
@@ -1335,6 +1335,8 @@
       "option": {
         "remote": true,
         "port": -1,
+        "perNote": "shared",
+        "perUser": "shared",
         "isExistingProcess": false,
         "setPermission": false,
         "owners": [],
@@ -2988,6 +2990,25 @@
       "url": "https://repo1.maven.org/maven2/",
       "host": "repo1.maven.org",
       "protocol": "https",
+      "releasePolicy": {
+        "enabled": true,
+        "updatePolicy": "daily",
+        "checksumPolicy": "warn"
+      },
+      "snapshotPolicy": {
+        "enabled": true,
+        "updatePolicy": "daily",
+        "checksumPolicy": "warn"
+      },
+      "mirroredRepositories": [],
+      "repositoryManager": false
+    },
+    {
+      "id": "local",
+      "type": "default",
+      "url": "file:///root/.m2/repository",
+      "host": "",
+      "protocol": "file",
       "releasePolicy": {
         "enabled": true,
         "updatePolicy": "daily",
