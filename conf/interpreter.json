@@ -1043,7 +1043,7 @@
       "properties": {
         "SPARK_HOME": {
           "name": "SPARK_HOME",
-          "value": "/opt/zeppelin/spark",
+          "value": "/spark",
           "type": "string",
           "description": "Location of spark distribution"
         },

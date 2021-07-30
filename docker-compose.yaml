@@ -3,11 +3,13 @@ version: '3'
 services:
   zeppelin:
     image: ${USERNAME}/zeppelin:master
+    container_name: zeppelin
+    hostname: zeppelin.bdb
     #environment:
     #  ZEPPELIN_LOG_DIR: '/logs'
     #  ZEPPELIN_NOTEBOOK_DIR: '/notebook'
-    ports:
-      - 8099:8080
+    #ports:
+    #  - 8099:8080
     networks:
       - spark-net
     volumes:
@@ -17,6 +19,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.zeppelin.rule=Host(`zeppelin.bdb`)"
+      - "traefik.http.services.zeppelin.loadbalancer.server.port=8080"
 
 networks:
   spark-net:
