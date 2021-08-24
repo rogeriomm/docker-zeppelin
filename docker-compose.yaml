@@ -2,20 +2,21 @@ version: '3'
 
 services:
   zeppelin:
-    image: ${USERNAME}/zeppelin:master
+    image: ${USERNAME}/zeppelin-custom:3.1.2-hadoop3.2-java11-bdb
     container_name: zeppelin
     hostname: zeppelin.bdb
     #environment:
     #  ZEPPELIN_LOG_DIR: '/logs'
     #  ZEPPELIN_NOTEBOOK_DIR: '/notebook'
-    #ports:
-    #  - 8099:8080
+    ports:
+      - 8099:8080
     networks:
       - spark-net
     volumes:
       - ./notebook:/opt/zeppelin/notebook
       - ./logs:/opt/zeppelin/logs
       - ./conf:/opt/zeppelin/conf
+      - work:/share
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.zeppelin.rule=Host(`zeppelin.bdb`)"
@@ -25,3 +26,8 @@ networks:
   spark-net:
     external:
       name: spark-net
+
+volumes:
+  work:
+    external:
+      name: work

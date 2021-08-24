@@ -16,8 +16,8 @@ build() {
     fi
     cd $([ -z "$4" ] && echo "./$NAME" || echo "$4")
     echo '--------------------------' building $IMAGE in $(pwd)
-    echo "docker build -t $IMAGE --build-arg USERNAME=$1 --build-arg TAG=$TAG ."
-    docker build -t $IMAGE --build-arg USERNAME=$1 --build-arg TAG=$TAG .
+    echo "docker build -t $IMAGE --build-arg USERNAME=$USER --build-arg TAG=$TAG"
+    docker buildx build -t $IMAGE --build-arg USERNAME=$USER --build-arg TAG=$TAG .
     cd -
 }
 
@@ -30,4 +30,4 @@ do
 done
 
 build zeppelin
-
+build zeppelin-custom

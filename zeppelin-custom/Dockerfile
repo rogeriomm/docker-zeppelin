@@ -1,0 +1,6 @@
+ARG USERNAME
+ARG TAG
+
+FROM $USERNAME/zeppelin:$TAG
+
+USER root
