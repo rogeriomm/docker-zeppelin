@@ -3,7 +3,7 @@ ARG TAG
 
 FROM $USERNAME/spark-base-python:$TAG
 
-ENV Z_VERSION="0.10.0"
+ARG Z_VERSION
 
 ENV LOG_TAG="[ZEPPELIN_${Z_VERSION}]:" \
     Z_HOME="/opt/zeppelin" \
