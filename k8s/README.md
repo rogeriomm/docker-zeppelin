@@ -11,7 +11,8 @@ echo $(minikube ip) zeppelin.local | sudo bash -c "cat >> /etc/hosts"
 
   * https://kubernetes.io/docs/concepts/workloads/pods/init-containers/: Init Containers
 
-# Spark init container error
+# Issues
+## Spark init container error
    * https://kubernetes.io/docs/tasks/debug-application-cluster/debug-init-containers/
    
 ```commandline
@@ -322,3 +323,7 @@ status:
   qosClass: Burstable
   startTime: "2021-09-28T22:30:02Z"
 ```
+
+## Don't work
+![image info](spark-issue-1.png)
+![image info](spark-issue-2.png)
